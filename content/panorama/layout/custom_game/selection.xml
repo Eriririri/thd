@@ -1,4 +1,3 @@
-
 <root> 
 <Panel class="AddonLoadingRoot"> 
 <Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_dragon_knight.png" />
@@ -24,27 +23,27 @@
 <Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_mirana.png" />
 <Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_centaur.png" />
 <Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_luna.png" />
-<Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_vengefulspirit.png" />
+<Image id="gamemode" class="SeqImg" src="s2r://panorama/images/heroes/selection/npc_dota_hero_vengefulspirit_png.vtex" />
 <Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_necrolyte.png" />
 <Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_windrunner.png" />
 <Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_naga_siren.png" />
 <Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_treant.png" />
 <Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_drow_ranger.png" />
-<Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_lich.png" />
-<Image id="gamemode" class="SeqImg" src="file://{images}/heroes/npc_dota_hero_lich.png" />
+<Image id="gamemode" class="SeqImg" src="s2r://panorama/images/heroes/selection/npc_dota_hero_lich_png.vtex" />
+<Image id="gamemode" class="SeqImg" src="s2r://panorama/images/heroes/npc_dota_hero_lich_png.vtex" />
 
 <Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_huskar.png" />
-<Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_ogre_magi.png" />
-<Image id="gamemode" class="SeqImg" src="file://{images}/heroes/npc_dota_hero_ogre_magi.png" />
+<Image id="gamemode" class="SeqImg" src="s2r://panorama/images/heroes/selection/npc_dota_hero_ogre_magi_png.vtex" />
+<Image id="gamemode" class="SeqImg" src="s2r://panorama/images/heroes/npc_dota_hero_ogre_magi_png.vtex" />
 
 <Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_spectre.png" />
-<Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_rubick.png" />
-<Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_antimage.png" />
-<Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_elder_titan.png" />
-<Image id="gamemode" class="SeqImg" src="file://{images}/heroes/npc_dota_hero_elder_titan.png" />
+<Image id="gamemode" class="SeqImg" src="s2r://panorama/images/heroes/selection/npc_dota_hero_rubick_png.vtex" />
+<Image id="gamemode" class="SeqImg" src="s2r://panorama/images/heroes/selection/npc_dota_hero_antimage_png.vtex" />
+<Image id="gamemode" class="SeqImg" src="s2r://panorama/images/heroes/selection/npc_dota_hero_elder_titan_png.vtex" />
+<Image id="gamemode" class="SeqImg" src="s2r://panorama/images/heroes/npc_dota_hero_elder_titan_png.vtex" />
 
-<Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_gyrocopter.png" />
-<Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_leshrac.png" />
-<Image id="gamemode" class="SeqImg" src="file://{images}/heroes/selection/npc_dota_hero_ursa.png" />
+<Image id="gamemode" class="SeqImg" src="s2r://panorama/images/heroes/selection/npc_dota_hero_gyrocopter_png.vtex" />
+<Image id="gamemode" class="SeqImg" src="s2r://panorama/images/heroes/selection/npc_dota_hero_leshrac_png.vtex" />
+<Image id="gamemode" class="SeqImg" src="s2r://panorama/images/heroes/selection/npc_dota_hero_ursa_png.vtex" />
 </Panel> 
 </root>

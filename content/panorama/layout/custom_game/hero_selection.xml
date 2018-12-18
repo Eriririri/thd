@@ -1,20 +1,20 @@
 <root>
 	<styles>
 		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
-		<include src="file://{resources}/styles/keyframes.css" />
-		<include src="file://{resources}/styles/dynamic_minimap.css" />
-		<include src="file://{resources}/styles/hero_selection_shared.css" />
-		<include src="file://{resources}/styles/hero_selection.css" />
-		<include src="file://{resources}/styles/hero_selection_hero_card.css" />
-		<include src="file://{resources}/styles/hero_selection_preview.css" />
-		<include src="file://{resources}/styles/hero_selection_picking_player.css" />
+<!--		<include src="s2r://panorama/styles/keyframes.vcss_c" />
+		<include src="s2r://panorama/styles/dynamic_minimap.vcss_c" /> -->
+		<include src="s2r://panorama/styles/hero_selection_shared.vcss_c" />
+		<include src="s2r://panorama/styles/hero_selection.vcss_c" />
+		<include src="s2r://panorama/styles/hero_selection_hero_card.vcss_c" />
+		<include src="s2r://panorama/styles/hero_selection_preview.vcss_c" />
+		<include src="s2r://panorama/styles/hero_selection_picking_player.vcss_c" />
 	</styles>
 	<scripts>
-		<include src="file://{resources}/scripts/arena_util.js" />
-		<include src="file://{resources}/scripts/shared_hero_selection_script.js" />
-		<include src="file://{resources}/scripts/hero_selection.js" />
-		<include src="file://{resources}/scripts/chat_smiles.js" />
-		<include src="file://{resources}/scripts/customchat.js" />
+		<include src="s2r://panorama/scripts/arena_util.vjs_c" />
+		<include src="s2r://panorama/scripts/shared_hero_selection_script.vjs_c" />
+		<include src="s2r://panorama/scripts/hero_selection.vjs_c" />
+		<include src="s2r://panorama/scripts/chat_smiles.vjs_c" />
+		<include src="s2r://panorama/scripts/customchat.vjs_c" />
 	</scripts>
 	<snippets>
 		<snippet name="HeroesPanel">

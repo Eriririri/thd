@@ -1,0 +1,22 @@
+"AddonInfo"
+{
+	"HeroGuidesSupported"			"1"
+
+	"TeamCount"		"2"
+	"maps"			"1_thdots_map dota 3_thdots_map_shuffle"
+	"IsPlayable"	"1"
+
+	"1_thdots_map"
+	{
+		"MaxPlayers"                    "10"
+	}
+
+	"dota"
+	{
+		"MaxPlayers"                    "14"
+	}
+	"3_thdots_map_shuffle"
+	{
+		"MaxPlayers"                    "10"
+	}	
+}

@@ -1,0 +1,613 @@
+"DOTAAbilities"
+{
+	"ability_thdotsr_reisen01"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/ability_thdots_reisenOld01"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"MaxLevel"	"4"
+		"ID"							"40116"			
+		"precache"
+		{
+			"particle"	"particles/heroes/reisen/ability_reisen_01.vpcf"
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_reisen_sounds.vsndevts"
+		}
+		"Modifiers"
+		{
+			"passive_reisenOld01_attack"
+			{
+				"Passive"	"1"
+				"OnAttackLanded"
+				{
+
+					"FireSound"
+					{
+						"EffectName"	"Voice_Thdots_Reisen.AbilityReisen01"
+						"Target"	"CASTER"
+					}
+					"RunScript"
+					{
+						"Target"	"TARGET"
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilityNewReisen.lua"
+						"Function"	"OnReisen01SpellSuccess"
+					}
+				}
+			}
+			"modifier_reisen01old_slow"
+			{
+				"Duration"	"%move_slow_duration"
+				"IsDebuff"	"1"
+				"IsPurgable"	"1"				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_slow"
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"%miss_change"
+				}
+			}
+			"ability_reisenold01_modifier"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"	"%bonus_attack_range"
+				}
+			}	
+			"modifier_reisen01old_talent"
+			{
+				"Duration"	"%move_slow_duration"
+				"IsPurgable"	"1"				
+				"IsDebuff"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+				}
+			}			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"ability_chance_base"	"100"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"move_slow"	"-5 -10 -15 -20"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"move_slow_duration"	"2.0"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"miss_change"	"0"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attack_range"	"50 100 150 200"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"dealdamage"	"4 8 12 16"
+			}			
+		}
+		"AbilityDamage"	"4 8 12 16"
+	}
+	
+	
+	
+	"ability_thdotsr_reisen02"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/ability_thdots_reisenOld02"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"MaxLevel"	"4"
+		"AbilityCooldown"	"16"
+		"AbilityManaCost"	"50"
+		"ID"							"40117"			
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_phantom_lancer/phantom_lancer_spawn_smoke.vpcf"
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_reisen_sounds.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"TARGET"
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilityNewReisen.lua"
+				"Function"	"OnNewthdReisen02SpellStart"
+				"Max_illusions"	"%max_illusions"
+				"Illusion_duration"	"%illusion_duration"
+				"Illusion_damage_out_pct"	"%illusion_damage_out_pct"
+				"Illusion_damage_in_pct"	"%illusion_damage_in_pct"
+				"illusionsummon" "%illusion_summon"
+				
+			}
+		}
+		"Modifiers"
+		{
+			"passive_reisenOld02_attack"
+			{
+				"Passive"	"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"Target"	"TARGET"
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilityNewReisen.lua"
+						"Function"	"OnNewthdReisen02SpellSuccess"
+						"Max_illusions"	"%max_illusions"
+						"Illusion_duration"	"%illusion_duration"
+						"Illusion_damage_out_pct"	"%illusion_damage_out_pct"
+						"Illusion_damage_in_pct"	"%illusion_damage_in_pct"
+						"Chance"	"%ability_chance_base"
+						"illusionChance"	"%ability_chance_illusion"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"TARGET"
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilityNewReisen.lua"
+						"Function"	"OnNewthdReisen02OnDeath"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ability_chance_base"	"10"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_illusions"	"9"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"illusion_duration"	"10"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"illusion_damage_out_pct"	"-86 -86 -86 -86"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"tooltip_illusion_damage"	"14 14 14 14"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"illusion_damage_in_pct"	"400"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ability_chance_illusion"	"10"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"illusion_summon"	"1 2 3 4"
+			}			
+		}
+	}	
+	
+	"ability_thdotsr_reisen03"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/ability_thdots_reisenOld03"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"		
+		"AbilityCastPoint"	"0.3"
+		"AbilityCooldown"	"15"
+		"AbilityCastRange"	"1250"
+		"AbilityManaCost"				"100 150 200 250"
+		"AOERadius"	"%reisen03_aoe"	
+		"ID"							"40118"			
+		"AbilityCastAnimation"	"ACT_DOTA_ATTACK2"		
+		"precache"
+		{
+			"particle"	"particles/heroes/reisen/ability_reisen_01.vpcf"
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_reisen_sounds.vsndevts"
+			"particle"	"particles/heroes/thtd_reisen/ability_reisen_03_explosion.vpcf"
+			"particle"	"particles/heroes/thtd_reisen/ability_reisen_03_explosion_h.vpcf"
+		}		
+		"OnSpellStart"
+		{			
+			"FireEffect"
+			{
+				"EffectName"	"particles/heroes/thtd_reisen/ability_reisen_03_explosion.vpcf"
+				"EffectAttachType"	"start_at_customorigin"
+				"TargetPoint"		"POINT"
+	
+				"ControlPoints"
+	            {
+	            	"01"	"%reisen03_aoe 0 0"
+	            	"03"	"0 0 0"
+	            }
+			}	
+
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilityNewReisen.lua"
+				"Function"		"OnReisen03SpellStart"
+				"agimultiply" "%agi_multy"				
+				"Target"
+				{
+			                "Center" "POINT"
+			                "Radius" "%reisen03_aoe"
+			                "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
+			                "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+				}					
+			}
+			
+				
+		}
+		"Modifiers"
+		{
+			"modifier_ability_thdotsr_reisen03"
+			{	
+				"Duration"	"%debuff_duration"
+				"IsDebuff"	"1"
+				"IsPurgable"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BONUS_DAY_VISION"	"%vision_reduction_reisen"
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"		"%attack_miss_pct"				
+					"MODIFIER_PROPERTY_BONUS_NIGHT_VISION"	"%vision_reduction_reisen"						
+				}		
+
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Voice_Thdots_Reisen.AbilityReisen01"
+						"Target"	"TARGET"
+					}					
+				}
+			}	
+			"modifier_ability_thdotsr_reisen03_blind"
+			{
+				"EffectName"	"particles/heroes/reisen/ability_reisen02.vpcf"
+				"EffectAttachType"	"attach_hitloc"			
+				"Duration"	"%blind_duration"
+				"IsDebuff"	"1"
+				"IsPurgable"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"		"%attack_miss_pct"	
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_slow"					
+				}		
+			}			
+		}
+		"AbilitySpecial"
+		{				
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"vision_reduction_reisen"	"-10000.1"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"debuff_duration"	"1.5"
+			}	
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attack_miss_pct"	"100"
+			}	
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"reisen03_aoe"	"300"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"agi_multy"	"0.5 1.0 1.5 2.0"
+			}		
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"blind_duration"	"1 2 3 4"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"move_slow"	"-10 -20 -30 -40"
+			}			
+		}
+		"AbilityDamage"	"50 100 150 200"		
+	}	
+	
+	"ability_thdotsr_reisen04"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/ability_thdots_reisenOld04"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_4"
+		"AbilityCooldown"	"30"
+		"ID"							"40119"			
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityManaCost"	"50"
+		"precache"
+		{
+			"particle"	"particles/heroes/reisen/ability_reisen02.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"TARGET"
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilityNewReisen.lua"
+				"Function"	"OnReisenNewThd04SpellStart"
+				"duration" "%duration"
+			}
+		}
+		"Modifiers"
+		{
+
+
+
+
+
+		
+			"ability_newthd_reisen04_modifier"
+			{
+			
+				"Duration"	"%duration"
+				"IsHidden"			"1"
+		
+				"Aura"          	"modifier_reisen04_aura_buff"
+				"Aura_Radius"   	"800"
+				"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"    	"DOTA_UNIT_TARGET_HERO" 
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilityNewReisen.lua"
+						"Function"		"OnNewThdReisen04Spellend"	
+						"Target"
+						{
+			                "Center"  "CASTER"
+			                "Radius"  "GLOBAL"
+			                "Teams"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
+			                "Types"   "DOTA_UNIT_TARGET_HERO"
+						}						
+					}	
+				}				
+				
+				
+				
+			}
+	
+			"modifier_reisen04_aura_buff"
+			{
+				"IsHidden"			"1"			
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilityNewReisen.lua"
+						"Function"		"OnNewThdReisen04buffcheck"
+						"duration" "%duration"					
+					}	
+				}	
+			}
+			
+			"modifier_reisen04_aura_buff2"
+			{
+				"IsHidden"			"1"				
+				"EffectName"	"particles/heroes/reisen/ability_reisen02.vpcf"
+				"EffectAttachType"	"attach_hitloc"			
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+					//"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_agi_stat"
+					"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"	"%bonus_attack_range"					
+					
+				}
+				"OnAttackLanded"
+				{				
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_NewThd_Reisen04_armor"
+						"Target"	"TARGET"
+						"Duration"	"%duration"
+					}								
+				}				
+			}
+
+
+			"modifier_NewThd_Reisen04_armor"
+			{
+				"IsDebuff"	"1"
+				"IsPurgable"	"1"
+				"Duration"	"%corruption_duration"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%corruption_armor"
+				}
+			}			
+
+			"modifier_reisen04_aurainvisible"
+			{
+			
+				"Duration"	"%invisduration"
+				"IsHidden"			"1"		
+				"Aura"          	"modifier_reisen04_aura_buffinvisible"
+				"Aura_Radius"   	"800"
+				"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"    	"DOTA_UNIT_TARGET_HERO" //mechanical?
+			}			
+			"modifier_reisen04_aura_buffinvisible"
+			{
+				"IsHidden"			"1"			
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilityNewReisen.lua"
+						"Function"		"OnNewThdReisen04buffcheckinvisible"
+						"duration" "%invisduration"					
+					}	
+				}						
+			}	
+			"modifier_reisen04_aura_buff2invisible"
+			{
+				"IsHidden"			"1"							
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}						
+			}			
+			
+			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"3.5"				
+				"LinkedSpecialBonus" "special_bonus_unique_mirana_2"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"invisduration"	"1.5"				
+			}			
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attack_speed"	"50 100 150"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attack_range"	"100"
+			}	
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"corruption_armor"	"-3 -6 -9"
+			}			
+			
+		}
+	}
+	
+	
+	"ability_thdotsr_reisenEx"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/ability_thdots_reisenEx"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"AbilityType"	"DOTA_ABILITY_TYPE_HIDDEN"
+		"MaxLevel"	"1"
+		"ID"							"40120"			
+		"Modifiers"
+		{		
+			"ability_thdotsr_reisenullusionex"
+			{		
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilityNewReisen.lua"
+						"Function"	"OnReisenIllusionDeath"
+					}
+				}	
+			}	
+		}
+		
+	}	
+
+	"special_bonus_unique_reisen_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"							"40121"		
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"12"
+			}
+		}
+	}
+	"special_bonus_unique_reisen_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"							"40122"		
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"12"
+			}
+		}
+	}
+	"special_bonus_unique_reisen_3"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"							"40123"			
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"2"
+			}
+		}
+	}				
+}

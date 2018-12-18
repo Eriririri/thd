@@ -1,0 +1,10 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_rubick"
+	{
+		"Model"                 "models/satori/satori.vmdl"
+		"ModelScale"            "1.0"
+		"DisableWearables"	"1"
+		"Ability2"				"ability_thdots_satori02"
+	}
+}

@@ -1,0 +1,48 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_drow_ranger"
+	"Title"			"Recommended items for Drow Ranger"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"                "item_cucumber"
+			"item"                "item_cucumber"
+			"item"                "item_cucumber"
+			"item"                "item_flask"
+			"item"                "item_card_love_man"
+			"item"                "item_thdtango"
+			"item"                "item_thdtango"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+		    "item"		"item_best_lunchbox"
+			"item"		"item_broom"	
+			
+			
+			"item"		"item_yatagarasu"
+			"item"		"item_green_eyed_Jealousy"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+		    "item"		"item_horse_blue"
+		    "item"		"item_camera"
+			"item"		"item_hakurei_amulet"			
+			"item"		"item_tsundere"			
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"		"item_ganggenier"
+			"item"		"item_item_dummy_doll1"
+			"item"		"item_frozen_frog"
+			"item"		"item_travel_boots"
+			"item"		"item_concordia"
+			"item"		"item_rapier"
+		}
+	}
+}

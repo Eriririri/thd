@@ -1,0 +1,86 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_drow_ranger"
+	"Title"			"Recommended items for Drow Ranger"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"                "item_cucumber"
+			"item"                "item_cucumber"
+			"item"                "item_courier"
+			"item"                "item_flask"
+			"item"                "item_card_love_man"
+			"item"                "item_thdtango"
+			"item"                "item_thdtango"
+			"item"                "item_ward_observer"			
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{
+			"item"		"item_tentacle"			
+		    "item"		"item_best_lunchbox"
+			"item"		"item_broom"	
+			"item"		"item_present_box"
+			"item"		"item_lifu"
+			"item"		"item_9ball"
+			//"item"		"item_tentacle"			
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+		    "item"		"item_qijizhixing"
+			"item"		"item_hakurei_ticket"
+			"item"		"item_bagua"
+			"item"		"item_green_dam"
+			"item"		"item_cyclone"
+			"item"		"item_hakurei_amulet"
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+						"item"                "item_yukkuri_stick"
+                        "item"                "item_rocket"
+                        "item"                "item_rocket_7"
+                        "item"                "item_three_dimension"
+                        "item"                "item_travel_boots"
+						"item"                "item_travel_boots"
+						"item"                "item_travel_boots"
+						"item"                "item_travel_boots"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+						"item"                "item_occult_ball"
+		}
+	}
+}

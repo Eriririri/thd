@@ -1,0 +1,113 @@
+"DOTAAbilities"
+{
+	"ability_thdots_bd"
+	{
+		"BaseClass"				"ability_lua"
+		"ScriptFile"			"abilities/abilitytower.lua"
+		"AbilityTextureName"	"custom/ability_thdots_koishi01"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"				"1"
+		"ID"							"40124"		
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"radius"		"1200"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_FLOAT"
+				"stickyness"	"3.0"
+			}
+		}
+	}
+
+	"ability_throne"
+	{
+		"BaseClass"				"ability_lua"
+		"ScriptFile"			"abilities/abilitythrone.lua"
+		"AbilityTextureName"	"custom/ability_thdots_koishi01"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"				"1"
+		"ID"							"40125"			
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"radius"		"3600"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_FLOAT"
+				"stickyness"	"10.0"
+			}
+		}
+	}
+	"ability_baracks_passive"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/ability_thdots_flandreEx"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"MaxLevel"	"1"
+		"ID"							"40126"			
+		"Modifiers"
+		{
+			"passive_check_shrine"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitydatadrivennonhero.lua"
+						"Function"	"OnBarracksdeath"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"increase_damage"	"0.16"
+			}
+		}
+	}	
+	"ability_thdtower_passive"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/ability_thdots_flandreEx"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"MaxLevel"	"1"
+		"ID"							"40127"			
+		"Modifiers"
+		{
+			"modifer_thdtower_passive"
+			{
+				"Passive"	"1"
+				//"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"-25"				
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"0"					
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_max_hp"	"400"
+			}
+		}
+	}		
+}

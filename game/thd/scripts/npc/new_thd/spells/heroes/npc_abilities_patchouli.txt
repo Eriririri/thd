@@ -1,0 +1,1474 @@
+"DOTAAbilities"
+{
+
+
+
+
+	"ability_thdotsr_patchouli_ultimate1"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/patchouli/BTNTomeRed"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"RequiredLevel"					"6"			
+	//	"RequiredLevel"					"0"		
+		"ID"							"40000"			
+		"MaxLevel"	"1"
+		"OnUpgrade"
+		{
+		   	"RunScript"
+			{
+				"Target"	"CASTER"
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"	"Patchouliultimate1"
+			}
+		}		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"9"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"int_reduction"	"-3 -4 -5"
+			}			
+		}
+	}
+	"ability_thdotsr_patchouli_ultimate2"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/patchouli/BTNNecromancerAdept"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"RequiredLevel"					"6"			
+	//	"RequiredLevel"					"0"	
+		"ID"							"40001"			
+		"MaxLevel"	"1"
+		"OnUpgrade"
+		{
+		   	"RunScript"
+			{
+				"Target"	"CASTER"
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"	"Patchouliultimate2"
+			}
+		}		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"9"
+			}		
+		}
+	}
+
+	"ability_thdotsr_patchouli_royal_flare"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityTextureName"	"custom/patchouli/ability_thdotsr_patchouli_royal_flare"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"		
+
+		"AbilityCooldown"				"60"	
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_6"		
+		"RequiredLevel"					"6 12 18"
+		"LevelsBetweenUpgrades"			"6"	
+		"AbilityCastRange"				"500"
+		"AbilityManaCost"				"300 450 600"		
+		"AbilityCastPoint"				"0.6"		
+		"ID"							"40002"		
+		"MaxLevel"	"3"
+		
+		"precache"
+		{
+			"particle"	"particles/heroes/patchouli/ability_patchouli_01.vpcf"
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_patchouli_sounds.vsndevts"			
+		}		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"		"OnPatchouliRoyalFlareStart"
+				"EffectDuration" "%duration"
+			}			
+			
+		}		
+		
+		"Modifiers"
+		{	
+			"modifier_passive_patchouli_ultimate_sun"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE" "%amplify_percent"
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"  "%amplify_percent"				
+				}				
+			}
+			"modifier_patchouli_royal_flare"
+			{
+				"Duration"	"%duration"		
+				"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	            "States"
+	            {
+					"MODIFIER_STATE_COMMAND_RESTRICTED"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED"				"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ROOTED"					"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_SILENCED"				"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MUTED"					"MODIFIER_STATE_VALUE_ENABLED"					
+	            }				
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+						"Function"		"OnPatchouliRoyalFlareStartStun"
+						"startdamage"    "%start_damage"
+						"Radius"   	  	"%radius"
+						"intscale"  	"%int_scale"						
+					}	
+				}
+				"ThinkInterval"	  	"%intervals"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+						"Function"		"OnPatchouliRoyalFlareDamage"
+						"Radius" 		"%radius"
+						"intervals" 	"%intervals"	
+						"Basedamage"  	"%base_damage"
+						"intscale"  	"%int_scale"
+						"totalduration" "%duration"
+					}	
+				}							
+			}
+			"modifier_patchouli_royal_flare_animation"
+			{
+				"Duration"	"%animation_duration"		
+				"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"IsHidden"	"1"				
+				"ThinkInterval"	  	"0.7"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+						"Function"		"OnPatchouliRoyalFlareAnimationStart"	
+						"Durationx"		"%animation_duration"							
+					}	
+				}				
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+						"Function"		"OnPatchouliRoyalFlareAnimation"
+						"Radius" "%radius"
+
+					}						
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+						"Function"		"OnPatchouliRoyalFlareAnimationEnd"
+
+					}	
+				}				
+				
+			}				
+			"modifier_patchouli_royal_flare_stun"
+			{
+				"Duration"	"%stun_duration"
+				"IsDebuff"	"1"
+				"IsPurgable"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"		"MODIFIER_STATE_VALUE_ENABLED"
+				}				
+				
+			}
+			"modifier_patchouli_royal_flare_pause_animation"
+			{
+				"IsHidden"	"1"			
+				"States"
+				{
+					"MODIFIER_STATE_FROZEN"				"MODIFIER_STATE_VALUE_ENABLED"
+				}				
+				
+			}			
+				
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"amplify_percent"	"15"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"radius"				"500"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"2.0 2.5 3.0"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bouns_damage"	"10 15 20 25"
+			}	
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"start_damage"	"100 150 200"
+			}	
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"400 600 800"
+			}	
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"int_scale"	"1.5"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"intervals"	"0.2"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration"	"0.7"
+			}	
+			"10"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"animation_duration"	"3"
+			}			
+		}
+	}	
+	"ability_thdotsr_patchouli_silent_selene"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityTextureName"	"custom/patchouli/ability_thdotsr_patchouli_silent_selene"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
+		"AbilityCooldown"				"60"	
+		"AOERadius"					"%radius"		
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_6"		
+		"RequiredLevel"					"6 12 18"
+		"LevelsBetweenUpgrades"			"6"	
+		"AbilityManaCost"				"300 450 600"		
+		"AbilityCastRange"				"1200"
+		"AbilityCastPoint"				"0.5"		
+		"ID"							"40003"		
+		"MaxLevel"	"3"
+		"precache"
+		{
+			"particle"	"particles/heroes/patchouli/ability_patchouli_01.vpcf"
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_patchouli_sounds.vsndevts"	
+			"particle"	"particles/newthd/patchouli/patchouli_silent_selene_beam.vpcf"	
+		}		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"		"OnPatchouliSilentSeleneStart"
+				"Target"	"POINT"				
+			}			
+			
+		}		
+		"Modifiers"	
+		{
+
+			"modifier_passive_patchouli_ultimate_moon"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"			
+				}
+				"OnAbilityExecuted"
+				{
+					"RunScript"
+					{
+								"ScriptFile"		"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+								"Function"			"OnPatchouliMoonReturnmana"
+								"Returnmana"		"%Return_mana"
+					}
+				}				
+			}
+
+			"modifier_patchouli_silent_selene"
+			{
+				"Aura"					"modifier_patchouli_silent_selene_area_debuff"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+				"Duration"				"%duration"
+	
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Enigma.Midnight_Pulse"
+						"Target"		"TARGET"
+					}
+					"AttachEffect"
+					{
+						"EffectName"		"particles/econ/items/lina/lina_ti7/lina_spell_light_strike_array_ti7_gold.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01"	"%radius 0 0"							
+						}
+					}					
+					"DestroyTrees"
+					{
+						"Target"	"TARGET"
+						"Radius"	"%radius"
+					}					
+				}
+				"ThinkInterval"	"1"				
+				"OnIntervalThink"
+				{
+					"AttachEffect"
+					{
+						"EffectName"		"particles/econ/items/lina/lina_ti7/lina_spell_light_strike_array_ti7_gold.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius 0 0"
+						}
+					}
+				}				
+			}
+	
+			"modifier_patchouli_silent_selene_area_debuff"
+			{				
+				"ThinkInterval"	"%intervals"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+						"Function"		"OnPatchouliSilentSeleneTick"
+						"Basedamage"  	"%base_damage"
+						"intscale"  	"%int_scale"
+						"intervals"  	"%intervals"
+						"totalduration" "%duration"						
+					}
+				}
+				"States"
+				{
+					"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}				
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_mana"	"400"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"radius"				"450"
+			}	
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"2.0 2.5 3.0"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"base_damage"			"400 600 800"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"int_scale"				"1.5"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"intervals"					"0.25"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"tooltip_cast_range"					"1200"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"Return_mana"					"25"
+			}			
+		}			
+	}
+	// =================================================================================================================
+	// Water Fire Sign "Phlogistic Rain"
+	// =================================================================================================================	
+	
+	"ability_thdotsr_patchouli_water_fire"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/patchouli/ability_thdotsr_patchouli_water_fire"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"		
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"MaxLevel"	"4"
+		"AbilityCastPoint"	"0.3"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+		"ID"							"40004"		
+		"AbilityManaCost"				"70 105 140 175"		
+		"AbilityCooldown"	"11 10 9 8"
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityCastRange"	"750"
+		"precache"
+		{
+			"particle"					"particles/units/heroes/hero_warlock/warlock_shadow_word_buff.vpcf"
+			"particle"					"particles/econ/items/witch_doctor/wd_ti8_immortal_head/wd_ti8_immortal_maledict.vpcf"	
+			"soundfile"					"soundevents/thdots_hero_sounds/thdots_lily_sounds.vsndevts"	
+			"soundfile"					"particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf"			
+		}
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"	"OnPatchouliWaterFireStart"			
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_patchouli_water_fire_debuff"
+			{
+				"Duration"				"%duration"	
+				"IsPurgable"	"1"
+				"EffectName"		"particles/units/heroes/hero_ogre_magi/ogre_magi_ignite_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"							
+				"ThinkInterval"	"%intervals"					
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+					//	"Target"		"TARGET"
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+						"Function"		"OnPatchouliWaterFireTick"
+						"Basedamage"		"%base_damage"
+						"intscale"			"%statscale"	
+						"intervals"			"%intervals"
+						"totalduration"		"%duration"					
+					}
+				}
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
+	
+						"ControlPoints"
+						{
+							"04"	"TARGET"
+						}
+					}
+				}				
+				 "Properties"
+			     {
+				       "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		     "%decrease_spell_damage"
+			     } 				
+			}					
+			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"decrease_spell_damage"	"-5 -10 -15 -20"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"9"
+			}	
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"90 135 180 225"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"statscale"	"2.0"
+			}	
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"intervals"	"0.25"
+			}				
+		}
+	}
+	// =================================================================================================================
+	// Water Earth Sign "Noalachian Deluge"
+	// =================================================================================================================	
+	
+	"ability_thdotsr_patchouli_water_earth"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"MaxLevel"						"4"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"custom/patchouli/ability_thdotsr_patchouli_water_earth"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCastRange"				"800"		
+		"ID"							"40005"	
+		"AbilityCastPoint"				"0.5"			
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"11 10 9 8"
+		"AbilityManaCost"				"70 105 140 175"
+		
+		"precache"
+		{
+			"particle"			"particles/units/heroes/hero_invoker/invoker_ice_wall.vpcf"
+			"particle"			"particles/units/heroes/hero_invoker/invoker_ice_wall_b.vpcf"
+			"particle"			"particles/units/heroes/hero_invoker/invoker_ice_wall_debuff.vpcf"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
+		}
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"6 7 8 9"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow"					"-300 -300 -300 -300"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"slow_duration"			"0.3"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage_per_second"		"15 30 45 60"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage_interval"		"0.25"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"wall_place_distance"	"0"  //This is the distance from Invoker to the middle point of the perpendicular ice wall.
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"num_wall_elements"		"15"  //(num_wall_elements * wall_element_spacing) + (2 * wall_element_radius) is the total length of the ice wall.
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"wall_element_spacing"	"80"  //The distance between the entity nodes comprising the ice wall.
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"wall_element_radius"	"105"  //Effectively the width of the wall's slowing/damaging aura.
+			}
+			"10"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"int_scale"	"0.5"
+			}			
+		}
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"				"OnPatchouliWaterEarthStart"
+				"Target"				"POINT"					
+				"NumWallElements"		"%num_wall_elements"
+				"WallElementSpacing"	"%wall_element_spacing"
+				"WallPlaceDistance"		"%wall_place_distance"
+				"SlowDuration"			"%slow_duration"
+				"intscale" "%nt_scale"
+			}
+		}
+		
+		//The slow lingers for %slow_duration seconds, but the damage over time ends as soon as the unit leaves the Ice Wall's radius,
+		//so two auras are used.
+		"Modifiers"
+		{	
+			"modifier_invoker_ice_wall_datadriven_unit_ability"
+			{
+				"Passive"			"0"
+				"IsHidden" 			"0"
+				"IsBuff"			"0"
+				"IsDebuff"			"0"
+				"IsPurgable"		"0"
+				
+				"States"
+				{
+					"MODIFIER_STATE_NO_UNIT_COLLISION"  	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_TEAM_MOVE_TO"    	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_TEAM_SELECT" 		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED" 	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ATTACK_IMMUNE"  		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MAGIC_IMMUNE"       	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"   		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP" 		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"   		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_OUT_OF_GAME"    		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"  		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+			"modifier_invoker_ice_wall_datadriven_unit_ability_aura_emitter_slow"
+			{
+				"Passive"			"0"
+				"IsHidden"			"1"
+				"IsBuff"			"0"
+				"IsDebuff"			"0"
+				"IsPurgable"		"0"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				
+				"Aura" 				"modifier_patchouli_ice_wall_slow"
+				"Aura_Radius" 		"%wall_element_radius"
+				"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+				"Aura_ApplyToCaster" "0"
+			}
+			"modifier_patchouli_ice_wall_slow"  //This modifier is visible to affected units.
+			{
+				"Duration"			"%slow_duration"
+				"Passive"  			"0"
+				"IsHidden" 			"0"
+				"IsBuff"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"		"1"
+				
+				"TextureName"			"invoker_ice_wall"
+				
+				"EffectName"			"particles/units/heroes/hero_invoker/invoker_ice_wall_debuff.vpcf"
+				"EffectAttachType"		"follow_origin"
+				
+				"StatusEffectName" 			"particles/status_fx/status_effect_frost.vpcf"
+				"StatusEffectPriority" 		"10"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"		"%slow"
+				}
+				
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"				"Hero_Invoker.IceWall.Slow"
+						"Target"					"TARGET"
+					}
+				}
+			}
+			"modifier_invoker_ice_wall_datadriven_unit_ability_aura_emitter_damage"
+			{
+				"Passive"			"0"
+				"IsHidden"			"1"
+				"IsBuff"			"0"
+				"IsDebuff"			"0"
+				"IsPurgable"		"0"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				
+				"Aura" 				"modifier_invoker_ice_wall_datadriven_unit_ability_aura_damage"
+				"Aura_Radius" 		"%wall_element_radius"
+				"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+				"Aura_ApplyToCaster" "0"
+			}
+			"modifier_invoker_ice_wall_datadriven_unit_ability_aura_damage"  //This modifier is hidden to affected units.
+			{
+				"Passive"  			"0"
+				"IsHidden" 			"1"
+				"IsBuff"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"		"0"
+				
+				"ThinkInterval" 		"%damage_interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+						"Function"			"modifier_invoker_ice_wall_datadriven_unit_ability_aura_damage_on_interval_think"
+						"DamageInterval"	"%damage_interval"
+					}
+				}
+			}
+		}
+	}
+	// =================================================================================================================
+	// Fire Earth Sign "Lava Cromlech" (T)
+	// =================================================================================================================	
+	"ability_thdotsr_patchouli_fire_earth"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityTextureName"	"custom/patchouli/ability_thdotsr_patchouli_fire_earth"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
+		"AbilityCooldown"				"11 10 9 8"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_5"		
+		"AbilityCastRange"				"850"
+		"AbilityCastPoint"				"0.5"
+		"AbilityManaCost"				"70 105 140 175"		
+		"AOERadius"						"%radius"			
+		"ID"							"40006"		
+		"MaxLevel"	"4"
+		"precache"
+		{
+			"particle"	"particles/newthd/patchouli/fire_earth/patchouli_lava_rock.vpcf"
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_patchouli_sounds.vsndevts"	
+		}		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"		"OnPatchouliLavaCromlechStart"
+				"Target"		"POINT"	
+				"Radius" 		"%radius"
+				"basedamage"	"%base_damage"
+				"intscale"	"%int_scale"				
+			}			
+			
+		}		
+		"Modifiers"	
+		{
+			"modifier_patchouli_lava_stun"
+			{
+				"Duration"	"%stun_duration"
+				"IsDebuff"	"1"
+				"IsPurgable"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"		"MODIFIER_STATE_VALUE_ENABLED"
+				}				
+				
+			}
+
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration"	"1.2"
+			}	
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"88 132 176 220"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"int_scale"	"1.7"
+			}			
+			
+		}			
+	}
+	"ability_thdotsr_patchouli_water_fire_earth"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/patchouli/ability_thdotsr_patchouli_moon_sign"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"RequiredLevel"					"0"	
+		"ID"							"40007"			
+		"MaxLevel"	"1"
+		"OnUpgrade"
+		{
+		   	"RunScript"
+			{
+				"Target"	"CASTER"
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchoulielement.lua"
+				"Function"	"PatchouEarthWaterFire"
+			}
+		}		
+	}
+	"ability_thdotsr_patchouli_water_fire_metal"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/patchouli/ability_thdotsr_patchouli_moon_sign"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"RequiredLevel"					"0"	
+		"ID"							"40008"			
+		"MaxLevel"	"1"
+		"OnUpgrade"
+		{
+		   	"RunScript"
+			{
+				"Target"	"CASTER"
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"	"PatchouEarthWaterFire"
+			}
+		}		
+	}
+	"ability_thdotsr_patchouli_water_fire_wood"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/patchouli/ability_thdotsr_patchouli_moon_sign"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"RequiredLevel"					"0"	
+		"ID"							"40009"			
+		"MaxLevel"	"1"
+		"OnUpgrade"
+		{
+		   	"RunScript"
+			{
+				"Target"	"CASTER"
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"	"PatchouEarthWaterFire"
+			}
+		}		
+	}
+	"ability_thdotsr_patchouli_fire_metal_wood"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/patchouli/ability_thdotsr_patchouli_moon_sign"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"RequiredLevel"					"0"	
+		"ID"							"40010"			
+		"MaxLevel"	"1"
+		"OnUpgrade"
+		{
+		   	"RunScript"
+			{
+				"Target"	"CASTER"
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"	"PatchouEarthWaterFire"
+			}
+		}		
+	}
+	"ability_thdotsr_patchouli_fire_metal_earth"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/patchouli/ability_thdotsr_patchouli_moon_sign"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"RequiredLevel"					"0"	
+		"ID"							"40011"			
+		"MaxLevel"	"1"
+		"OnUpgrade"
+		{
+		   	"RunScript"
+			{
+				"Target"	"CASTER"
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"	"PatchouEarthWaterFire"
+			}
+		}		
+	}	
+	"ability_thdotsr_patchouli_metal_wood_earth"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/patchouli/ability_thdotsr_patchouli_moon_sign"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"RequiredLevel"					"0"	
+		"ID"							"40012"			
+		"MaxLevel"	"1"
+		"OnUpgrade"
+		{
+		   	"RunScript"
+			{
+				"Target"	"CASTER"
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"	"PatchouEarthWaterFire"
+			}
+		}		
+	}
+	"ability_thdotsr_patchouli_wood_water_earth"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/patchouli/ability_thdotsr_patchouli_moon_sign"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"RequiredLevel"					"0"	
+	//	"ID"							"40012"			
+		"MaxLevel"	"1"
+		"OnUpgrade"
+		{
+		   	"RunScript"
+			{
+				"Target"	"CASTER"
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"	"PatchouWoodWaterEarth"
+			}
+		}		
+	}
+	"ability_thdotsr_patchouli_metal_wood_water"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/patchouli/ability_thdotsr_patchouli_moon_sign"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"RequiredLevel"					"0"	
+	//	"ID"							"40012"			
+		"MaxLevel"	"1"
+		"OnUpgrade"
+		{
+		   	"RunScript"
+			{
+				"Target"	"CASTER"
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchoulielement.lua"
+				"Function"	"PatchouMetalWoodWater"
+			}
+		}		
+	}	
+	// =================================================================================================================
+	// Metal Wood Sign "Elemental Harvester" (D)
+	// =================================================================================================================		
+	"ability_thdotsr_patchouli_metal_wood"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"custom/patchouli/ability_thdotsr_patchouli_metal_wood"
+		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_3"		
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
+			"particle"			"particles/units/heroes/hero_mirana/mirana_spell_arrow.vpcf"
+			"particle"			"particles/econ/items/windrunner/windrunner_ti6/windrunner_spell_powershot_ti6.vpcf"
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"3000"
+		"AbilityCastPoint"				"0.5"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"11 10 9 8"
+		"AbilityDuration"				"0.1"
+	
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"%damagex"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"70 105 140 175"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"arrow_speed"		"2400.0"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"arrow_width"		"100"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"arrow_range"		"2400"
+			}
+			"08"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"arrow_vision"	"650"
+			}
+			"10"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"vision_duration"	"1.0"
+			}
+			"11"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damagex"			"120 180 240 300"
+			}
+			"12"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"int_scale"			"2.6"
+			}			
+			"13"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"kill_hp"			"6 9 12 15"
+			}					
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"			"Hero_Mirana.ArrowCast"
+				"Target"				"CASTER"
+			}
+	
+			"LinearProjectile"
+			{
+				"Target"      	"POINT"
+			    "EffectName"  	"particles/econ/items/windrunner/windrunner_ti6/windrunner_spell_powershot_ti6.vpcf"
+			    "MoveSpeed"   	"%arrow_speed"
+			    "StartRadius"   "%arrow_width"
+			    "StartPosition" "attach_origin"
+			    "EndRadius"     "%arrow_width"
+			    "FixedDistance" "%arrow_range"
+			    "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+			    "TargetTypes"   "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+			    "TargetFlags"   "DOTA_UNIT_TARGET_FLAG_NONE"
+			    "HasFrontalCone"    "0"
+			    "ProvidesVision"	"1"
+			    "VisionRadius"	"%arrow_vision"
+			}
+	
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"				"OnPatchouliElementalHarvesterStart"
+				"Target"				"POINT"
+			}		
+		}
+	
+		"OnProjectileHitUnit"
+		{
+			"FireSound"
+			{
+				"EffectName"			"Hero_Mirana.ArrowImpact"
+				"Target"
+				{
+					"Center"			"TARGET"
+					"Flags"     		"DOTA_UNIT_TARGET_FLAG_DEAD"
+				}
+			}
+	
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"				"HarvesterHit"
+				"Target"				"TARGET"
+				"damagexx" 				"%damagex"
+				"intscale" 				"%int_scale"
+				"KillHP" "%kill_hp"
+			}
+	
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"		"HarvesterVision"
+			}
+		}
+	}
+	// =================================================================================================================
+	// Wood Water Sign "Water Elf" (T)
+	// =================================================================================================================
+	"ability_thdotsr_patchouli_wood_water"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/patchouli/ability_thdotsr_patchouli_wood_water"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastPoint"	"0.5"
+		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_5"
+		"AbilityCooldown"	"11 10 9 8"
+		"AbilityManaCost"	"70 105 140 175"
+		"precache"
+		{
+			"particle_folder"	"particles/thd2/heroes/iku"
+			"particle"	"particles/thd2/heroes/iku/iku_02.vpcf"
+			"particle"	"particles\units\heroes\hero_razor\razor_storm_lightning_strike.vpcf"
+			"particle"	"particles\units\heroes\hero_razor\razor_storm_lightning_strike.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+				"Function"		"OnPatchouliWaterElfStart2"
+				"Radius" "%radius"
+				"intscale" "%int_scale"
+				"basedamage" "%damage"
+				"pushradius" "%push_radius"			
+				"BlastFinalRadius"				"%blast_final_radius"
+				"BlastSpeedPerSecond"			"%blast_speed_per_second"
+				"BlastVisionRadius"				"%blast_vision_radius"
+				"BlastVisionDuration"			"%blast_vision_duration"
+				"Durationx" "%duration"				
+			}
+
+			
+		}
+		"Modifiers"
+		{
+			"modifier_patchouli_water_elf_push_check"
+			{
+				"Duration" "%check_duration"			
+				"IsDebuff"		"1"
+				"IsHidden"	"1"				
+			}	
+		
+			"modifier_patchouli_water_elf_push"
+			{
+				"Duration" "%duration"			
+				"IsDebuff"		"1"
+				"IsPurgable"	"1"	
+				"StatusEffectName" 		"particles/status_fx/status_effect_frost.vpcf" 	   
+				"StatusEffectPriority"  "10"
+	
+				"EffectName"		"particles/units/heroes/hero_invoker/invoker_deafening_blast_knockback_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"
+	
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+						"Function"		"deafening_blast_knockback_start"
+					}
+				}
+	
+				"ThinkInterval"  "%intervals"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+						"Function"		"deafening_blast_knockback"
+						"intervals" "%intervals"
+						"durationz" "%duration"
+						"pushradius" "%push_radius"
+						
+					}
+	
+					"DestroyTrees"
+					{
+						"Target" 		"TARGET"
+						"Radius"		"100" // Change this to %tree_radius whenever the game feels like working properly
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+						"Function"		"PatchouliFreePathing"
+					}
+				}				
+				"States"
+				{
+				//	"MODIFIER_STATE_STUNNED"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED" 	"MODIFIER_STATE_VALUE_ENABLED"	
+					"MODIFIER_STATE_ROOTED" 	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED" 	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_FROZEN" 	"MODIFIER_STATE_VALUE_ENABLED"					
+					
+				}
+			}
+			"modifier_patchouli_water_elf_free_path"
+			{
+				"Duration" "0.5"						
+				"States"
+				{
+					"MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"350"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+			//	"push_radius"	"200 300 400 500"
+				"push_radius"	"900"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"80 120 160 200"
+			}			
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"int_scale"	"1.7"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"0.35"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"intervals"	"0.03"
+			}			
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"blast_final_radius"			"900"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"blast_speed_per_second"		"900"
+			}				
+			"9"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"blast_vision_radius"			"900"
+			}
+			"10"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"blast_vision_duration"			"3"
+			}	
+			"11"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"check_duration"				"3"
+			}	
+		}
+	}	
+	
+	// =================================================================================================================
+	// Metal Water Sign "Mercury Poisoning" (F)
+	// =================================================================================================================	
+	"ability_thdotsr_patchouli_metal_water"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"	"custom/patchouli/ability_thdotsr_patchouli_metal_water"
+		"AOERadius"						"%radius"
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastRange"				"700"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"11 10 9 8"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"70 105 140 175"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"350"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"4.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"30 60 90 120"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow"					"-20 -25 -30 -35"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tick_rate"				"0.25"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"int_scale"				"0.7"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"end_duration"				"1.5"
+			}			
+		}
+	
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
+			"particle"  "particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
+		}
+	
+		"OnSpellStart"
+		{
+		 	"CreateThinker"
+		 	{
+		 		"ModifierName"	"modifier_mercury_poison_thinker"
+		 		"Target" 		"POINT"
+		 	}
+		} 
+	
+		"Modifiers"
+		{
+			"modifier_mercury_poison_thinker"
+			{
+				"Aura"					"modifier_mercury_poison"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+				"Aura_Flags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Duration"				"%duration"
+	
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+						"Function"		"MercuryPoisonSound"
+						"Durationx" 	"%duration"						
+					}
+	
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius 1 1"
+							"15" "25 150 25"
+							"16" "0 0 0"
+						}
+					}
+				}
+			}
+	
+			"modifier_mercury_poison"
+			{
+				"IsDebuff"		"1"
+				"ThinkInterval"	"%tick_rate"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"		"%slow"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow"				
+				}
+				"OnIntervalThink"
+				{
+					"FireSound"
+					{
+						"EffectName" 	"Hero_Alchemist.AcidSpray.Damage"
+						"Target"		"TARGET"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+						"Function"		"OnPatchouliMercuryPoisonTick"
+						"intervals" 	"%tick_rate"	
+						"Basedamage"  	"%damage"
+						"intscale"  	"%int_scale"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/new_thd/abilitypatchouli.lua"
+						"Function"		"OnPatchouliMercuryPoisonTickEnd"
+						"intervals" 	"%tick_rate"	
+						"Basedamage"  	"%damage"
+						"intscale"  	"%int_scale"
+					}
+				}				
+			}
+			"modifier_patchouli_mercury_poison_end"
+			{
+				"IsDebuff"		"1"
+				"Duration"		"%end_duration"
+				"IsPurgable"	"1"				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%slow"
+				}			
+			}			
+		}
+	}	
+}	

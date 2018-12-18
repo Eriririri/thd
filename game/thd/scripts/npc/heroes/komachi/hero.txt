@@ -1,0 +1,58 @@
+"DOTAHeroes"
+{
+	// Komachi
+	"npc_dota_hero_elder_titan"
+	{
+		"Model"						"models/komachi/komachi.vmdl"
+		"ModelScale"				"1.0"
+		"ArmorPhysical"				"0"
+
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"Ability1"					"ability_thdots_komachi01"
+		"Ability2"					"ability_thdots_komachi02"
+		"Ability3"					"ability_thdots_komachi03"
+		"Ability4"					"ability_thdots_komachi_soul_explode_all"
+		//"Ability5"					"techies_remote_mines"
+		"Ability5"					"ability_thdots_komachi05"
+		"Ability6"					"ability_thdots_komachi04"
+		"Ability7"					"generic_hidden"
+		"Ability8"					"generic_hidden"
+		"Ability9"					"generic_hidden"
+
+		"Ability10"					"special_bonus_attack_damage_20"
+		"Ability11"					"special_bonus_mp_regen_4"
+		"Ability12"					"special_bonus_movement_speed_30"
+		"Ability13"					"special_bonus_unique_komachi_1" // +x% spin chance for W
+		"Ability14"					"special_bonus_unique_komachi_2" // +x additional soul for E
+		"Ability15"					"special_bonus_unique_komachi_3" // ult -x sec cd reduction
+		"Ability16"					"special_bonus_unique_komachi_4" // +x respawn time for ult
+		"Ability17"					"special_bonus_spell_lifesteal_15" // +x% max hp spirit detonate damage
+
+		"AttackDamageMin"			"20"
+		"AttackDamageMax"			"20"
+		"AttackRange" "175"
+
+		"AttributeBaseStrength"		"26"
+		"AttributeStrengthGain"		"2.8"
+		"AttributeBaseAgility"		"16"
+		"AttributeAgilityGain"		"1.7"
+		"AttributeBaseIntelligence"	"16"
+		"AttributeIntelligenceGain"	"1.4"
+		"AttackAnimationPoint"	"0.3"
+
+		"MovementSpeed"				"300"
+		"MovementTurnRate"			"100000.0"
+
+		"StatusHealth"				"100"
+		"StatusHealthRegen"			"0.0"
+		"StatusMana"				"50"
+		"StatusManaRegen"			"0.9"
+
+		"VisionDaytimeRange"		"1050"
+		"VisionNighttimeRange"		"700"
+
+		"DisableWearables"			"1"
+		"Role"					"Carry,Nuker,Disabler,Jungler,Escape,Pusher,Initiator"
+		"Rolelevels"			"1,3,2,3,0,2,1"
+	}
+}

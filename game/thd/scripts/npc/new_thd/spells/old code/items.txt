@@ -1,0 +1,293 @@
+
+
+
+	// =================================================================================================================
+	// Loneliness tacticus
+	// =================================================================================================================
+	"item_loneliness"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_loneliness"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ID"	"8103"
+		"ItemQuality"	"secret_shop"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"6000"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShopTags"	"str;regen_health"
+		"Modifiers"
+		{
+			"modifier_item_loneliness"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_strength"
+				}
+				"OnCreated"
+				{				
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
+						"Function"		"modifier_item_loneliness_regen"
+					}
+				}
+				"OnDestroy"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_item_loneliness_regen_health"
+						"Target"	"CASTER"
+					}
+				}
+			}
+			"modifier_item_loneliness_regen_health"
+			{
+				//"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				// "IsHidden"	"1"
+				"ThinkInterval"	"1.0"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
+						"Function"	"ItemAbility_LoneLiness_RegenHealth"
+						"PercentHealthRegenBonus"	"%percent_health_regen_bonus"
+						"HealthRegenMultiplier"	"%health_regen_multiplier"
+					}
+				}
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_strength"	"50"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"percent_health_regen_bonus"	"1.5"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"health_regen_multiplier"	"30"
+			}
+		}
+	}
+	
+	// =================================================================================================================
+	// Horse Blue
+	// =================================================================================================================
+	"item_horse_blue"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_horse_blue"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ID"	"8082"
+		"ItemQuality"	"component"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"1200"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"SideShop"	"1"
+		"ItemShopTags"	"move_speed;attack_speed;agi"
+		"Modifiers"
+		{
+			"modifier_item_horse_blue"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnCreated"	{}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"	"%bonus_movement_speed"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_intellect"
+					
+				}
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_movement_speed"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attack_speed"	"25"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_intellect"	"8"
+			}
+		}
+		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+	}
+
+	// =================================================================================================================
+	// Horse Red
+	// =================================================================================================================
+	"item_horse_red"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_horse_red"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ID"	"8078"
+		"ItemQuality"	"component"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"1600"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"SideShop"	"1"
+		"ItemShopTags"	"move_speed;attack_speed;str"
+		"Modifiers"
+		{
+			"modifier_item_horse_red"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnCreated"	{}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"	"%bonus_movement_speed"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_strength"
+				}
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_movement_speed"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attack_speed"	"25"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_strength"	"8"
+			}
+		}
+		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+	}	
+	
+	// =================================================================================================================
+	// Recipe: Horse Green
+	// =================================================================================================================
+	"item_recipe_horse_green"
+	{
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_sample_item"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ID"	"8079"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"450"
+		"SideShop"	"1"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_horse_green"
+		"ItemRequirements"
+		{
+			"01"	"item_broom;item_wind_amulet"
+		}
+		"Model"	"models/props_gameplay/recipe.mdl"
+	}
+
+	// =================================================================================================================
+	// Horse Green
+	// =================================================================================================================
+	"item_horse_green"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_horse_green"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ID"	"8080"
+		"ItemQuality"	"component"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"1400"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"SideShop"	"1"
+		"ItemShopTags"	"move_speed;attack_speed;agi"
+		"Modifiers"
+		{
+			"modifier_item_horse_green"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnCreated"	{}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"	"%bonus_movement_speed"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_agility"
+				}
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_movement_speed"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attack_speed"	"25"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_agility"	"8"
+			}
+		}
+		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+	}	

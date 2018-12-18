@@ -1,0 +1,446 @@
+"DOTAAbilities"
+{
+	"ability_thdots_komachi01"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"hero/komachi"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"		"custom/komachi/ability_thdots_komachi01"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+
+		// Stats
+		//----------------------------------------------------------------
+		"AbilityManaCost"			"70"
+		"AbilityCooldown"			"20.0 18.0 16.0 14.0"
+		"AbilityCastRange"			"200 300 400 500"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+
+		"precache"
+		{			
+			"soundfile"				"soundevents/thdots_hero_sounds/thdots_komachiex_sounds.vsndevts"
+//			"particle"				"particles/heroes/komachi/ability_komachi_01.vpcf"
+//			"particle"				"particles/heroes/komachi/ability_komachi_02.vpcf"
+//			"soundfile"				"soundevents/thdots_hero_sounds/thdots_nue_sounds.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"link_duration"		"2.0"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"break_distance"	"3600"
+			}
+		}
+	}
+
+	"ability_thdots_komachi02"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"hero/komachi"
+		"AbilityTextureName"		"custom/komachi/ability_thdots_komachi02"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
+
+		"precache"
+		{
+			"particle"				"particles/units/heroes/hero_axe/axe_attack_blur_counterhelix.vpcf"
+			"particle"				"particles/units/heroes/hero_axe/axe_counterhelix.vpcf"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"lifesteal"			"10 14 18 22"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"spin_radius"		"350"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"spin_bonus_damage"	"30 60 90 120"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"spin_lifesteal"	"35 45 55 65"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"spin_chance"			"25"
+				"LinkedSpecialBonus"	"special_bonus_unique_komachi_1"
+			}
+		}
+	}
+
+	"ability_thdots_komachi03"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"hero/komachi"
+		"AbilityBehavior"   	    "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"		"custom/komachi/ability_thdots_komachi03"
+		"AbilityCastAnimation"      "Act_DOTA_CAST_ABILITY_3"
+
+		// Stats
+		//----------------------------------------------------------------
+		//"AbilityCooldown"           "12.0"
+
+		"precache"
+		{
+			"particle"				"particles/heroes/komachi/ability_komachi_03.vpcf"
+			"particle"				"particles/heroes/komachi/ability_komachi_03_explosion_2.vpcf"
+			"soundfile"				"soundevents/thdots_hero_sounds/thdots_nue_sounds.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"soul_count"			"3 5 7 9"
+				"LinkedSpecialBonus"	"special_bonus_unique_komachi_2"
+			}
+		}
+	}
+
+	"ability_thdots_komachi04"
+	{
+		"BaseClass"           	    "ability_lua"
+		"ScriptFile"				"hero/komachi"
+		"AbilityBehavior"   	    "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"		"custom/komachi/ability_thdots_komachi04"
+		"AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_4"
+		"AbilityType"				"DOTA_ABILITY_TYPE_ULTIMATE"
+
+		// Stats
+		//----------------------------------------------------------------
+		"AbilityManaCost"           "150"
+		"AbilityCooldown"           "90.0 75.0 60.0"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_PURE"
+		"AbilityCastRange"			"600"
+
+		"precache"
+		{			
+			"soundfile"				"soundevents/thdots_hero_sounds/thdots_komachiex_sounds.vsndevts"
+		}
+				"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Komachi04EX"
+				"Target"	"CASTER"
+			}
+		}	
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"stun_duration"			"1.0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"break_duration"		"10.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_pct"			"30 40 50"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"respawn_increase"		"10 20 30"
+				"LinkedSpecialBonus"	"special_bonus_unique_komachi_4"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"no_heal_duration"			"8 10 12"
+			}
+		}
+	}
+"imba_techies_focused_detonate"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"							"ability_lua"
+		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_UNRESTRICTED"
+		"AbilityTextureName"				"techies_focused_detonate"
+		"MaxLevel"							"1"
+		"ScriptFile"						"hero/komachi"		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"					"25000"
+		"AbilityCastPoint"					"0.03"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"					"1"		
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"700"
+			}			
+		}		
+	}
+	"ability_thdots_komachi_soul_explode"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"hero/komachi"
+		"AbilityBehavior"   	    "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNRESTRICTED | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"		"custom/komachi/ability_thdots_komachiEX"
+//		"AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCastPoint"			"0"
+
+		// Stats
+		//----------------------------------------------------------------
+		"AbilityCooldown"           "12.0"
+
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"320"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"45"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_pct"			"3"
+				"LinkedSpecialBonus"	"special_bonus_unique_komachi_5"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"small_distance"		"950"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"long_distance"			"1000"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"small_damage"			"1"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"medium_damage"			"1"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"long_damage"			"15"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_hero"			"200"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Komachi Talent 1: +x% spin chance for W
+	//=================================================================================================================
+	"special_bonus_unique_komachi_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"5"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Komachi Talent 2: +x additional souls for E
+	//=================================================================================================================
+	"special_bonus_unique_komachi_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"2"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Komachi Talent 3: ult -x sec cd reduction
+	//=================================================================================================================
+	"special_bonus_unique_komachi_3"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"-15"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Komachi Talent 4: +x respawn time for ult
+	//=================================================================================================================
+	"special_bonus_unique_komachi_4"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"15"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Komachi Talent 5: +x% max hp spirit detonate damage
+	//=================================================================================================================
+	"special_bonus_unique_komachi_5"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"1"
+			}
+		}
+	}
+	"ability_thdots_komachi_soul_explode_all"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"hero/komachi"
+		"AbilityBehavior"   	    "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_UNRESTRICTED"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"		"custom/komachi/ability_thdots_komachiEX"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityCastPoint"			"0.2"
+		"MaxLevel"					"1"
+
+		// Stats
+		//----------------------------------------------------------------
+		"AbilityCooldown"           "1.0"
+
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"320"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"60"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_pct"			"3"
+				"LinkedSpecialBonus"	"special_bonus_unique_komachi_5"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_hero"			"200"
+			}
+		}
+	}
+}
